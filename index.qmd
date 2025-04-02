@@ -1,19 +1,28 @@
 ---
-title: "_Masterclass_ du `SSPHub`"
+title: Les masterclass du `SSPHub`
+subtitle: |
+  **[Masterclass du `SSPHub`]{.orange}**
+author:
+  - name: "[Lino Galiana](https://www.linogaliana.fr/)"
+    affiliations:
+        - name: "Insee"
+date: 2025-04-09
+date-format: short
+slide-number: true
+footer: |
+  **Masterclass du `SSPHub`**
+lang: fr-FR
+slide-tone: true
+format:
+  onyxia-revealjs
+from: markdown+emoji
 listing:
-  id: sample-listings
+  id: listing-mc-data
   contents:
-    - "sessions/*.qmd"
+    - "slides-data/*.qmd"
   sort: "date"
   type: grid
 ---
 
-Site web en construction
-
-
-::: {#sample-listings}
+::: {#listing-mc-data}
 :::
-
-## _Replays_ des sessions
-
-A venir

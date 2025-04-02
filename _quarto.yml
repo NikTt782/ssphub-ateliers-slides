@@ -2,17 +2,7 @@ project:
   type: website
   render:
     - index.qmd
-    - sessions/api.qmd
-#- slides/api.qmd
-
-custom-callout:
-  exercise:
-    icon-symbol: "📝 "
-    color: "pink"
-
-filters:
-  - custom-callout
-  - "vscode.lua"
+    - slides-data/api.qmd
 
 lang: fr
 
@@ -22,7 +12,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: "sessions/api.qmd"
+      - href: "slides-data/api.qmd"
         text: API
 
 
