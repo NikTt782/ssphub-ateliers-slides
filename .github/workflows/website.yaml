@@ -14,30 +14,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install system dependencies
-        run: |
-          sudo apt-get install libudunits2-dev \
-            libgdal-dev \
-            libgeos-dev \
-            libproj-dev
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-          cache: 'pip' # caching pip dependencies
-      - run: |
-            pip install uv
-            uv pip install -r pyproject.toml --system
       - name: Set up quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          version: 1.6.42
-      - name: Render website
-        run: |
-          quarto render --to html
-        env:
-            TOKEN_API_INSEE:  ${{ secrets.TOKEN_API_INSEE }}
-      - name: Publish to GitHub Pages
+      - name: Publish to GitHub Pages (and render)
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
-          render: "false"
+
