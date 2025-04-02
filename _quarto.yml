@@ -3,10 +3,3 @@ project:
   render:
     - index.qmd
     - slides-data/api.qmd
-
-lang: fr
-
-format:
-  html:
-    css: styles.css
-
