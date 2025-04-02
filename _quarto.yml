@@ -15,7 +15,6 @@ website:
       - href: "slides-data/api.qmd"
         text: API
 
-
 format:
   html:
     theme: cosmo
@@ -24,5 +23,3 @@ format:
     code-annotations: hover
     code-link: true
 
-execute:
-  cache: true
