@@ -220,10 +220,9 @@ Ceux à retenir sont : [__200__]{.blue2} (succès), [__400__]{.blue2} (requête 
 
 ## Les requêtes [`GET`]{.blue2}
 ```{=html}
-<a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?autoLaunch=true&amp;name=%C2%AB02_pandas_intro%C2%BB&amp;init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Flinogaliana%2Fpython-datascientist%2Fmain%2Fsspcloud%2Finit-vscode.sh%C2%BB&amp;init.personalInitArgs=%C2%ABmanipulation%2002_pandas_intro%20correction%C2%BB" target="_blank" rel="noopener" data-original-href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?autoLaunch=true&amp;name=%C2%AB02_pandas_intro%C2%BB&amp;init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Flinogaliana%2Fpython-datascientist%2Fmain%2Fsspcloud%2Finit-vscode.sh%C2%BB&amp;init.personalInitArgs=%C2%ABmanipulation%2002_pandas_intro%20correction%C2%BB"><img src="https://custom-icon-badges.demolab.com/badge/SSP%20Cloud-Lancer_avec_VSCode-blue?logo=vsc&amp;logoColor=white" alt="Onyxia"></a>
+<a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?autoLaunch=true&amp;name=%C2%AB02_pandas_intro%C2%BB&amp;init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Flinogaliana%2Fpython-datascientist%2Fmain%2Fsspcloud%2Finit-vscode.sh%C2%BB&amp;init.personalInitArgs=%C2%ABmanipulation%2002_pandas_intro%20correction%C2%BB" target="_blank" rel="noopener" data-original-href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?autoLaunch=true&amp;name=%C2%AB02_pandas_intro%C2%BB&amp;init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Flinogaliana%2Fpython-datascientist%2Fmain%2Fsspcloud%2Finit-vscode.sh%C2%BB&amp;init.personalInitArgs=%C2%ABmanipulation%2002_pandas_intro%20correction%C2%BB"><img src="https://custom-icon-badges.demolab.com/badge/SSP%20Cloud-Lancer_avec_VSCode-blue?logo=vsc&amp;logoColor=white" alt="Onyxia"></a><br>
 ```
 
-<br>
 
 * Requête la plus commune
 
@@ -253,10 +252,14 @@ requests.get(url_ban_example).json()
 
 
 ## Les requêtes `POST`
+```{=html}
+<a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?autoLaunch=true&amp;name=%C2%AB02_pandas_intro%C2%BB&amp;init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Flinogaliana%2Fpython-datascientist%2Fmain%2Fsspcloud%2Finit-vscode.sh%C2%BB&amp;init.personalInitArgs=%C2%ABmanipulation%2002_pandas_intro%20correction%C2%BB" target="_blank" rel="noopener" data-original-href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?autoLaunch=true&amp;name=%C2%AB02_pandas_intro%C2%BB&amp;init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Flinogaliana%2Fpython-datascientist%2Fmain%2Fsspcloud%2Finit-vscode.sh%C2%BB&amp;init.personalInitArgs=%C2%ABmanipulation%2002_pandas_intro%20correction%C2%BB"><img src="https://custom-icon-badges.demolab.com/badge/SSP%20Cloud-Lancer_avec_VSCode-blue?logo=vsc&amp;logoColor=white" alt="Onyxia"></a><br>
+```
 
-* Plus complexe mais `requests` est suffisamment flexible
+* Envoyer des données utiles à l'API
 
-* Plus compliqué est de rentrer les objets `Python` dans le cadre de l'API
+* Plus complexe mais `Requests` est flexible
+    + Transformer les objets {{< fa brands python >}} en _input_ de l'API
 
 ```{.python}
 params = {
@@ -281,13 +284,22 @@ response = requests.post(
 
 ![](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/slides/img/environment_clean.png)
 
+_Source: [Cours de l'ENSAE de mise en production](https://ensae-reproductibilite.github.io/)_
 
 ## Bonnes pratiques pour les secrets
+```{=html}
+<a href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?autoLaunch=true&amp;name=%C2%AB02_pandas_intro%C2%BB&amp;init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Flinogaliana%2Fpython-datascientist%2Fmain%2Fsspcloud%2Finit-vscode.sh%C2%BB&amp;init.personalInitArgs=%C2%ABmanipulation%2002_pandas_intro%20correction%C2%BB" target="_blank" rel="noopener" data-original-href="https://datalab.sspcloud.fr/launcher/ide/vscode-python?autoLaunch=true&amp;name=%C2%AB02_pandas_intro%C2%BB&amp;init.personalInit=%C2%ABhttps%3A%2F%2Fraw.githubusercontent.com%2Flinogaliana%2Fpython-datascientist%2Fmain%2Fsspcloud%2Finit-vscode.sh%C2%BB&amp;init.personalInitArgs=%C2%ABmanipulation%2002_pandas_intro%20correction%C2%BB"><img src="https://custom-icon-badges.demolab.com/badge/SSP%20Cloud-Lancer_avec_VSCode-blue?logo=vsc&amp;logoColor=white" alt="Onyxia"></a><br>
+```
 
-1. Boite de dialogue via `getpass` (application interactive uniquement)
-2. Variables d'environnement:
-    * Dans un fichier `.env` (non committé!)
-    * Dans les secrets de l'intégration continue
+
+
+1. __[Boite de dialogue]{.orange}__ via [`getpass`](https://docs.python.org/3/library/getpass.html) (application interactive uniquement)
+
+. . .
+
+2. __[Variables d'environnement]{.orange}__:
+    * Dans un [fichier `.env`]{.blue2} (non committé!) lu avec [`dotenv`](https://pypi.org/project/python-dotenv/)
+    * Dans les [secrets]{.blue2} de l'intégration continue (cf. [doc {{< fa brands github >}}](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions))
 
 ```{.python}
 from dotenv import load_dotenv
@@ -298,11 +310,17 @@ token = os.getenv("MON_PETIT_JETON")
 
 ## Conclusion
 
-* Pratique pour récupérer des données ponctuelles:
-    * Afficher un nombre limité d'enregistrements dans une application
-    * Récupérer des données issues d'un processus de transformation complexe
+* [__Pratique__]{.orange} pour récupérer des __[données ponctuelles]{.orange}__:
+    * Afficher un __[nombre limité d'enregistrements]{.blue2}__ dans une application
+    * Récupérer des données issues d'un [__processus de transformation complexe__]{.blue2}
 
-* Limitées en termes de volumétrie ou stabilité d'accès
+. . .
 
-* Code très adhérant à une API et un langage client
+* __[Limitées]{.orange}__ en termes de [__volumétrie__]{.blue2} ou __[stabilité d'accès]{.blue2}__
 
+. . .
+
+* __[Code très adhérant]{.orange}__ à une API et un langage client
+
+
+## Des questions ?
