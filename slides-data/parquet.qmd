@@ -1,0 +1,202 @@
+---
+title: "Le format de données `Parquet`"
+subtitle: "Ateliers du SSPHub #2"
+author:
+    - Lino Galiana
+description: "Slides présentant les enjeux de l'utilisation du format `Parquet` et l'écosystème associé"
+date: "2025-04-16"
+date-format: long
+slide-number: true
+footer: |
+  Ateliers du SSPHub #2
+lang: fr-FR
+chalkboard: # press the B key to toggle chalkboard
+  theme: whiteboard
+format:
+  onyxia-revealjs:
+    output-file: index.html
+    output-dir: _site
+controls: true
+css: custom.css
+from: markdown+emoji
+image: "/img/librairies2.png"
+priority: 1
+---
+
+## "The obligatory intro slide"
+
+![Source : [motherduck.com](https://motherduck.com/blog/big-data-is-dead/)](img/intro-big-data.png){fig-align="center" height=400}
+
+## Enjeux
+
+- Tendance à la [**massification**]{.orange} des données
+    - Relatif aux [**capacités de stockage et de traitement**]{.blue2}
+
+. . .
+
+![Source : [AI with Python](https://www.packtpub.com/product/artificial-intelligence-with-python-second-edition/9781839219535)](img/vvv.png){fig-align="center" height=350}
+
+## Pour traiter la volumétrie
+
+- Utiliser une [**infra de stockage**]{.orange} adaptée (`S3`)
+
+- Utiliser un [**format**]{.orange} de données adapté (`Parquet`)
+
+- Utiliser des [**outils**]{.orange} informatiques adaptés
+  - Suffisant la plupart du temps : [**calcul *larger than memory* optimisé**]{.blue2} (`Arrow` / `DuckDB`)
+  - Si volumétrie massive : [**calcul distribué**]{.blue2} (`Spark`)
+
+
+## "Big Data is dead" ?
+
+- Jordan Tigani : [Big Data is dead](https://motherduck.com/blog/big-data-is-dead/)
+    - "The big data frontier keeps receding"
+    - "Most people don't have that much data"
+    - "Most data is rarely queried"
+
+- Plaidoyer pour une [**parcimonie**]{.orange}...
+    - ... qui [**facilite la mise en production**]{.blue2} !
+
+# Pourquoi le format `Parquet` ?
+
+## Enjeux
+
+- Le choix d'un format de données répond à un [**arbitrage**]{.orange} entre plusieurs critères :
+  - [**Public cible**]{.blue2}
+  - [**Finalité**]{.blue2} (traitement, analyse, diffusion)
+  - [**Volumétrie**]{.blue2}
+  - [**Interopérabilité**]{.blue2}
+
+## Formats traditionnels
+
+- Formats de données adhérents à un langage ([**sas7bdat**]{.orange}, [**RDS**]{.orange}, [**fst**]{.orange}, etc.)
+  - [**Non-interopérables**]{.blue2} -> à éviter !
+
+- Le format [**CSV**]{.orange}
+  - [**Interopérable**]{.blue2} et [**simple**]{.blue2} d'utilisation
+  - Pas de gestion des [**méta-données**]{.blue2}
+  - Peu adapté aux [**données volumineuses**]{.blue2}
+
+## Limites du `CSV`
+
+:::: {.columns}
+
+::: {.column .incremental width=70%}
+
+- Des [**performances limitées**]{.orange}
+  - [**Stockage**]{.blue2} : non-compressé -> [**espace disque élevé**]{.blue2}
+  - [**Lecture**]{.blue2} : "orienté-ligne" -> [**performances faibles**]{.blue2}
+
+:::
+
+::: {.column width=30%}
+
+
+![](images/parquet-table1.png){fig-align="center"}
+
+:::
+
+- **[Pas de typage]{.orange}** des données à l'écriture du fichier
+  - Demande expertise et précaution à la lecture
+  - Exemple: <b><ins>01</ins>004</b> pour le code commune d'Ambérieu-en-Bugey
+
+::::
+
+# Les avantages du format `Parquet`
+
+## Un format léger {{< iconify fe feather color=#0f8c18 >}}
+
+- [**Stockage**]{.orange} :
+    - [**Compression**]{.blue2} : entre 5 et 20 fois plus léger qu'un CSV
+
+. . .
+
+::: {.nonincremental}
+::::: {.callout-note}
+## Exemple: Recensement de la Population
+
+- [Ficher détail](https://www.insee.fr/fr/statistiques/8268848?sommaire=8205966) : 20 millions de lignes, 92 variables
+    - CSV: > 4Go
+    - Parquet: < 500Mo
+:::::
+:::
+
+## Le format `Parquet`
+
+- [**Lecture**]{.orange} :
+    - Jusqu’à 34x plus rapide qu’un CSV
+
+- [**"Orienté colonne"**]{.orange}
+  - Optimisé pour les [**traitements analytiques**]{.blue2}
+  - Limite la quantité de données à mettre en mémoire
+
+. . .
+
+![](./images/parquet-read-columns.png){fig-align="center"}
+
+## Le format `Parquet`
+
+- [**Partitionner**]{.orange} les données pour [**optimiser la lecture**]{.blue2}
+
+. . .
+
+![](img/partitions.png){fig-align="center" height="250"}
+
+::: {.nonincremental}
+::::: {.callout-warning}
+## L'art de bien partitionner
+
+- Partitionner par une/des [**variable(s) d'intérêt**]{.blue2}
+
+- [**Eviter**]{.blue2} de créer de [**nombreux petits (< 128Mo) fichiers**]{.blue2}
+
+:::::
+:::
+
+## Le format `Parquet`
+
+- Gestion native des [**méta-données**]{.orange}
+  - Définition automatique d'un [**schéma**]{.blue2} (noms, types)
+  - Mise à disposition plus [**robuste**]{.blue2}
+
+- [**Interopérable**]{.orange}
+
+- [**Open-source**]{.orange}
+
+## Le format `Parquet`
+
+- Deux *frameworks* de référence : [Arrow](https://book.utilitr.org/03_Fiches_thematiques/Fiche_arrow.html) et [DuckDB](https://book.utilitr.org/03_Fiches_thematiques/Fiche_duckdb.html)
+  - Orientation [**fichier**]{.blue2} (`Arrow`) VS orientation [**BDD**]{.blue2} (`DuckDB`)
+  - Très bonne [**intégration**]{.blue2} avec le `tidyverse`
+
+- [**Traitement en-mémoire optimisé**]{.orange}
+  - [**Orientés-colonne**]{.blue2}
+  - [***Lazy evaluation***]{.blue2}
+
+. . .
+
+::: {.nonincremental}
+::::: {.callout-note}
+## Exemple d'une requête *lazy*
+
+```R
+n_logements_depcom <- achille |>
+  filter(dep %in% c("01", "02", "03")) |>  # Récupère seulement les données nécessaires
+  select(idlogement, depcom) |>  # Récupère seulement les colonnes nécessaires
+  group_by(depcom) |>
+  summarise(n_logements = n()) |>
+  collect()  # Les calculs ne sont effectués qu'à cette étape !
+```
+
+:::::
+:::
+
+## Le format `Parquet`
+
+- `Parquet` gagne sur tous les tableaux
+
+. . .
+
+![](img/tableau-perf-parquet.png){fig-align="center" height="500"}
+
+

@@ -3,5 +3,6 @@ project:
   render:
     - index.qmd
     - slides-data/api.qmd
+    - slides-data/parquet.qmd
 
 css: custom.css

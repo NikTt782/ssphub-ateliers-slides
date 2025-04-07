@@ -324,3 +324,5 @@ token = os.getenv("MON_PETIT_JETON")
 
 
 ## Des questions ?
+
+![](https://minio.lab.sspcloud.fr/lgaliana/generative-art/pythonds/kid.png)
