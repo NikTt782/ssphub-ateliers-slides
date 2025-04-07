@@ -140,7 +140,7 @@ priority: 1
 
 . . .
 
-![](img/partitions.png){fig-align="center" height="250"}
+![](./images/partitions.png){fig-align="center" height="250"}
 
 ::: {.nonincremental}
 ::::: {.callout-warning}
@@ -197,6 +197,6 @@ n_logements_depcom <- achille |>
 
 . . .
 
-![](img/tableau-perf-parquet.png){fig-align="center" height="500"}
+![](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/slides/img/tableau-perf-parquet.png){fig-align="center" height="500"}
 
 
