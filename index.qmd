@@ -1,7 +1,7 @@
 ---
-title: Les masterclass du `SSPHub`
+title: Les ateliers du `SSPHub`
 subtitle: |
-  **[Masterclass du `SSPHub`]{.orange}**
+  **[Liste des ressources présentées]{.orange}**
 author:
   - name: "[Lino Galiana](https://www.linogaliana.fr/)"
     affiliations:
@@ -10,7 +10,7 @@ date: 2025-04-09
 date-format: short
 slide-number: true
 footer: |
-  **Masterclass du `SSPHub`**
+  **Ateliers du `SSPHub`**
 lang: fr-FR
 slide-tone: true
 format:

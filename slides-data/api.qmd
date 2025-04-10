@@ -1,7 +1,7 @@
 ---
 title: "Les API"
 subtitle: |
-  **[Ateliers #1 du `SSPHub`]{.orange}**
+  **[Atelier du `SSPHub` #1]{.orange}**
 author:
   - name: "[Lino Galiana](https://www.linogaliana.fr/)"
     affiliations:
@@ -18,6 +18,7 @@ format:
 from: markdown+emoji
 image: https://minio.lab.sspcloud.fr/lgaliana/generative-art/pythonds/serveurpython.jpg
 ---
+
 
 # Introduction
 
