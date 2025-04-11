@@ -34,7 +34,7 @@ priority: 1
 
 . . .
 
-![Source : [AI with Python](https://www.packtpub.com/product/artificial-intelligence-with-python-second-edition/9781839219535)](img/vvv.png){fig-align="center" height=350}
+![Source : [AI with Python](https://www.packtpub.com/product/artificial-intelligence-with-python-second-edition/9781839219535)](https://ensae-reproductibilite.github.io/slides/img/vvv.png){fig-align="center" height=350}
 
 ## Pour traiter la volumétrie
 
@@ -332,12 +332,46 @@ n_logements_depcom <- achille |>
 ![](/slides-data/images/lazyeval2.png)
 
 
-## Le format `Parquet` {.nonincremental}
+## `Parquet` gagne sur tous les tableaux {.nonincremental}
 
-- `Parquet` gagne sur tous les tableaux
+![_Benchmarks_ faits pour la formation aux bonnes pratiques de l'Insee](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/slides/img/tableau-perf-parquet.png){fig-align="center" height="500"}
+
+
+## Ressources complémentaires
+
+- Les posts d'Eric Mauvière sur [icem7.fr/](https://www.icem7.fr/)
 
 . . .
 
-![](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/slides/img/tableau-perf-parquet.png){fig-align="center" height="500"}
+- [Webinaire du CASD](https://www.casd.eu/webinaire-casd-data-tech/) sur `Parquet` et `DuckDB`
+
+. . .
+
+- [La formation aux bonnes pratiques](https://inseefrlab.github.io/formation-bonnes-pratiques-git-R/) de l'Insee
+
+. . .
+
+- Un atelier de l'EHESS sur `Parquet` avec de nombreux exemples [ici](https://linogaliana.github.io/parquet-recensement-tutomate/)
+
+. . .
+
+- Le [cours de mise en production](https://ensae-reproductibilite.github.io/website/) de l'ENSAE
 
 
+## Ce n'est pas fini !
+
+![](https://minio.lab.sspcloud.fr/lgaliana/generative-art/ssphub/tunes_chasing.jpg)
+
+
+## Nouvelles opportunités avec cet écosystème
+
+- [__Intégration native avec `S3`__]{.orange}
+    - Pour [**travailler sur des serveurs à l'état de l'art**]{.blue2}...
+    - Plutôt que sur des ordinateurs aux ressources limitées
+
+. . .
+
+- [DuckDB WASM](https://minio.lab.sspcloud.fr/lgaliana/generative-art/ssphub/tunes_chasing.jpg) pour faire du [__`DuckDB` dans le navigateur__]{.orange} :
+    - Pour des [**_dataviz_ réactives**]{.blue2}...
+    - Dans des [**sites statiques**]{.blue2} !
+    - Bye bye les galères de déploiement de `Shiny`, `Streamlit`...
