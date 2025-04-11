@@ -38,24 +38,38 @@ priority: 1
 
 ## Pour traiter la volumétrie
 
-- Utiliser une [**infra de stockage**]{.orange} adaptée (`S3`)
-
 - Utiliser un [**format**]{.orange} de données adapté (`Parquet`)
+
+. . .
 
 - Utiliser des [**outils**]{.orange} informatiques adaptés
   - Suffisant la plupart du temps : [**calcul *larger than memory* optimisé**]{.blue2} (`Arrow` / `DuckDB`)
   - Si volumétrie massive : [**calcul distribué**]{.blue2} (`Spark`)
 
+. . .
+
+
+- Utiliser une [**infra de stockage**]{.orange} adaptée (`S3`)
+
+. . .
+
+::: {.callout-note}
+Nous allons voir comment ces trois points sont complémentaires.
+:::
 
 ## "Big Data is dead" ?
 
-- Jordan Tigani : [Big Data is dead](https://motherduck.com/blog/big-data-is-dead/)
-    - "The big data frontier keeps receding"
-    - "Most people don't have that much data"
-    - "Most data is rarely queried"
+* Jordan Tigani : [Big Data is dead](https://motherduck.com/blog/big-data-is-dead/)
+    - _"The big data frontier keeps receding"_
+    - _"Most people don't have that much data"_
+    - _"Most data is rarely queried"_
+
+
+. . .
 
 - Plaidoyer pour une [**parcimonie**]{.orange}...
     - ... qui [**facilite la mise en production**]{.blue2} !
+
 
 # Pourquoi le format `Parquet` ?
 
@@ -72,16 +86,18 @@ priority: 1
 - Formats de données adhérents à un langage ([**sas7bdat**]{.orange}, [**RDS**]{.orange}, [**fst**]{.orange}, etc.)
   - [**Non-interopérables**]{.blue2} -> à éviter !
 
+. . .
+
 - Le format [**CSV**]{.orange}
   - [**Interopérable**]{.blue2} et [**simple**]{.blue2} d'utilisation
   - Pas de gestion des [**méta-données**]{.blue2}
   - Peu adapté aux [**données volumineuses**]{.blue2}
 
-## Limites du `CSV`
+## Limites du `CSV` {.incremental}
 
 :::: {.columns}
 
-::: {.column .incremental width=70%}
+::: {.column width=70%}
 
 - Des [**performances limitées**]{.orange}
   - [**Stockage**]{.blue2} : non-compressé -> [**espace disque élevé**]{.blue2}
@@ -96,6 +112,7 @@ priority: 1
 
 :::
 
+
 - **[Pas de typage]{.orange}** des données à l'écriture du fichier
   - Demande expertise et précaution à la lecture
   - Exemple: <b><ins>01</ins>004</b> pour le code commune d'Ambérieu-en-Bugey
@@ -109,6 +126,7 @@ priority: 1
 - [**Stockage**]{.orange} :
     - [**Compression**]{.blue2} : entre 5 et 20 fois plus léger qu'un CSV
 
+
 . . .
 
 ::: {.nonincremental}
@@ -121,77 +139,200 @@ priority: 1
 :::::
 :::
 
-## Le format `Parquet`
+## Un format efficace
 
 - [**Lecture**]{.orange} :
     - Jusqu’à 34x plus rapide qu’un CSV
 
+. . .
+
 - [**"Orienté colonne"**]{.orange}
   - Optimisé pour les [**traitements analytiques**]{.blue2}
   - Limite la quantité de données à mettre en mémoire
+  - Conçu pour être écrit une fois mais lu fréquemment
 
 . . .
 
-![](./images/parquet-read-columns.png){fig-align="center"}
+![](/slides-data/images/parquet-read-columns.png){fig-align="center"}
 
-## Le format `Parquet`
+## Pour optimiser la lecture
 
-- [**Partitionner**]{.orange} les données pour [**optimiser la lecture**]{.blue2}
+- [**Partitionner**]{.orange} ou [**ordonner**]{.orange} les données
 
-. . .
 
-![](./images/partitions.png){fig-align="center" height="250"}
+![](https://ensae-reproductibilite.github.io/slides/img/partitions.png){fig-align="center" height="230"}
 
 ::: {.nonincremental}
 ::::: {.callout-warning}
 ## L'art de bien partitionner
 
-- Partitionner par une/des [**variable(s) d'intérêt**]{.blue2}
-
-- [**Eviter**]{.blue2} de créer de [**nombreux petits (< 128Mo) fichiers**]{.blue2}
+- Partitionner par une/des [**variable(s) d'intérêt**]{.blue2} si gros fichier
+    + [**Eviter**]{.blue2} de créer de [**nombreux petits (< 128Mo) fichiers**]{.blue2}
+- Sinon ordonner les données avant d'écrire le fichier (cf. [Eric Mauvière](https://www.icem7.fr/outils/comment-bien-preparer-son-parquet/))
 
 :::::
 :::
 
-## Le format `Parquet`
+## Un format universel et fiable
 
 - Gestion native des [**méta-données**]{.orange}
   - Définition automatique d'un [**schéma**]{.blue2} (noms, types)
   - Mise à disposition plus [**robuste**]{.blue2}
 
+. . .
+
 - [**Interopérable**]{.orange}
+
+. . .
 
 - [**Open-source**]{.orange}
 
-## Le format `Parquet`
+. . .
+
+- Non lisible par un humain mais de plus en plus de visualiseurs en ligne
+    - Par exemple sur le [SSPCloud](https://datalab.sspcloud.fr/data-explorer) {{< fa solid dragon >}}
+
+# Du point de vue d'un producteur de données
+
+## `Parquet`: quels avantages ?
+
+* Format libre, _open source_ et [__indépendant du langage__]{.orange} ;
+  * Les formats propriétaires imposent des outils aux consommateurs !
+
+* __[Plus de confort]{.orange}__ pour les utilisateurs:
+  * Des [requêtes plus rapides et efficaces]{.blue2}: seulement les données nécessaires sont lues
+  * Des [données conformes]{.blue2} à la mise à disposition par le producteur
+
+## `Parquet`: quels usages ?
+
+* Format privilégié pour la mise à disposition de données internes à l’Insee:
+  * Moins d’asymétries entre utilisateurs et producteurs.
+
+
+::: {.callout-note .nonincremental}
+## Premières diffusions à l’externe
+
+- Bureaux de votes du **[__répertoire électoral unique__]{.blue2}** (REU):
+- [__Recensement de la population__]{.blue2} (RP)
+- [__Base permanente des équipements__]{.blue2} (BPE)
+
+:::
+
+## `Parquet`: quels usages ?
+
+:::: {.columns}
+
+::: {.column width=50%}
+
+![](/slides-data/images/res_secondaires.png)
+
+:::
+
+::: {.column width=50%}
+
+![](/slides-data/images/res_secondaires2.png)
+
+:::
+
+::::
+
+_Exemples de cartes pouvant être produites simplement avec les données du recensement diffusées par l'Insee_
+
+
+# Exploiter un fichier `Parquet`
+
+## Enjeu
+
+* `Parquet` ne résout pas tout
+  * L’espace disque est optimisé
+  * Les données décompressées doivent __[passer en RAM]{.blue2}__
+
+. . .
+
+* Le framework adapté dépend de la [__volumétrie__]{.orange}
+  * Pour la plupart des besoins : `Arrow` et `DuckDB`
+
+
+## Les frameworks
 
 - Deux *frameworks* de référence : [Arrow](https://book.utilitr.org/03_Fiches_thematiques/Fiche_arrow.html) et [DuckDB](https://book.utilitr.org/03_Fiches_thematiques/Fiche_duckdb.html)
   - Orientation [**fichier**]{.blue2} (`Arrow`) VS orientation [**BDD**]{.blue2} (`DuckDB`)
-  - Très bonne [**intégration**]{.blue2} avec le `tidyverse`
+
+. . .
 
 - [**Traitement en-mémoire optimisé**]{.orange}
   - [**Orientés-colonne**]{.blue2}
-  - [***Lazy evaluation***]{.blue2}
+  - [***Lazy evaluation***]{.blue2} (prochaine slide)
 
 . . .
+
+- Très bonne [**intégration**]{.blue2}:
+  - Avec le `tidyverse` ({{< fa brands r-project >}})
+  - Avec le système de stockage `S3`
+
+## Les frameworks
+
+
+![](https://linogaliana.github.io/parquet-recensement-tutomate-slides/img/librairies2.png){fig-align="center"}
+
+
+## La lazy evaluation
+
+* Les frameworks comme **[Arrow]{.orange}** ou **[DuckDB]{.orange}** n’exécutent pas immédiatement les opérations
+
+. . .
+
+* Les instructions sont **[optimisées avant exécution]{.orange}**
+    * Vous écrivez un **[plan d'exécution]{.blue2}**, réinterprété
+
+. . .
+
+* Avantages :
+    * __[Moins de données]{.blue2}__ manipulées inutilement
+    * __[Moins de RAM]{.blue2}__ consommée
+    * __[Exécution plus rapide]{.blue2}__ car optimisée
+
+
+## La lazy evaluation
 
 ::: {.nonincremental}
 ::::: {.callout-note}
 ## Exemple d'une requête *lazy*
 
-```R
+En supposant qu'`achille` est un objet `Arrow` ou `DuckDB`:
+
+```{.r}
 n_logements_depcom <- achille |>
-  filter(dep %in% c("01", "02", "03")) |>  # Récupère seulement les données nécessaires
-  select(idlogement, depcom) |>  # Récupère seulement les colonnes nécessaires
+  filter(dep %in% c("01", "02", "03")) |>  #<1>
+  select(idlogement, depcom) |>  # <2>
   group_by(depcom) |>
   summarise(n_logements = n()) |>
-  collect()  # Les calculs ne sont effectués qu'à cette étape !
+  collect()  #<3>
 ```
+1. Récupère seulement les données nécessaires
+2. Récupère seulement les variables nécessaires
+3. Les __[calculs ne sont effectués qu'à cette étape]{.orange}__ !
 
 :::::
 :::
 
-## Le format `Parquet`
+## La lazy evaluation {.nonincremental}
+
+* Voici le début du plan:
+
+![](/slides-data/images/lazyeval1.png)
+
+❓️ [_Pourrait-il être optimisé ?_]{.blueµ2}
+
+## La lazy evaluation {.nonincremental}
+
+* Voici le plan plus optimal:
+  * [__Predicate pushdown__]{.orange}
+
+![](/slides-data/images/lazyeval2.png)
+
+
+## Le format `Parquet` {.nonincremental}
 
 - `Parquet` gagne sur tous les tableaux
 

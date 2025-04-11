@@ -1,0 +1,282 @@
+[
+  {
+    "objectID": "slides-data/api.html#quest-ce-quune-api",
+    "href": "slides-data/api.html#quest-ce-quune-api",
+    "title": "Les API",
+    "section": "Qu’est-ce qu’une API ?",
+    "text": "Qu’est-ce qu’une API ?\n\n\n\nUne Application programming interface ou « interface de programmation d’application ») est une interface logicielle qui permet de « connecter » un logiciel ou un service à un autre logiciel ou service afin d’échanger des données et des fonctionnalités.\nCNIL\n\n\n\nDéfinition peu informative:\n\nPython, scikit-learn, Docker, etc. sont des APIs\nEn pratique, on signifie généralement une API REST"
+  },
+  {
+    "objectID": "slides-data/api.html#les-apis-rest",
+    "href": "slides-data/api.html#les-apis-rest",
+    "title": "Les API",
+    "section": "Les APIs REST",
+    "text": "Les APIs REST\n\n\nAPI RESTful : API conforme au style d’architecture REST\n\nCommunication via le protocole HTTP\n\n\n\n\nEn pratique :\n\nOn accède à un endpoint (ex : l’API de la BAN)\nAvec des requêtes HTTP (GET, POST, etc.) (ex : rues contenant “comédie”)"
+  },
+  {
+    "objectID": "slides-data/api.html#analogie-avec-un-restaurant",
+    "href": "slides-data/api.html#analogie-avec-un-restaurant",
+    "title": "Les API",
+    "section": "Analogie avec un restaurant",
+    "text": "Analogie avec un restaurant\n\n\n💬 Vous passez commande\n\nRequête avec paramètres depuis , , votre navigateur…\n\n\n\n\n↔︎️ Le serveur transmet la commande en cuisine:\n\nPoint d’entrée de l’API\n\n\n\n\n\n🧑‍🍳 La cuisine prépare le plat\n\nLe serveur (informatique) fait les traitements ad hoc\n\n\n\n\n\n🍕 Vous recevez votre plat\n\nVous recevez une réponse au format JSON"
+  },
+  {
+    "objectID": "slides-data/api.html#pourquoi-les-api",
+    "href": "slides-data/api.html#pourquoi-les-api",
+    "title": "Les API",
+    "section": "Pourquoi les API ?",
+    "text": "Pourquoi les API ?\n\nPraticité car permet de dissocier:\n\nLe client: une interface web () ou un langage informatique (, , …)\nLe serveur: le moteur de calcul derrière\n\n\n\n\nSobriété: permet l’accès à la donnée voulue sans parcourir tout un fichier\n\n\n\n\nConfidentialité: on peut mettre des droits d’accès à certaines données\n\n\n\n\nUnversalité: pas d’a priori sur le mode d’accès"
+  },
+  {
+    "objectID": "slides-data/api.html#les-api-de-données",
+    "href": "slides-data/api.html#les-api-de-données",
+    "title": "Les API",
+    "section": "Les API de données",
+    "text": "Les API de données"
+  },
+  {
+    "objectID": "slides-data/api.html#les-api-de-données-1",
+    "href": "slides-data/api.html#les-api-de-données-1",
+    "title": "Les API",
+    "section": "Les API de données",
+    "text": "Les API de données\n\nPlus de fichiers enregistrés manuellement\n\nMise à jour assurée par le producteur\nDirectement propagées au consommateur de données\nPermet l’automatisation de scripts sans stockage local\n\n\n\n\nContrat formel avec un producteur de données\n\nContrairement au webscraping!\n\n\n\n\n\nPermet de récupérer des données transformées complexes\n\nExemple: inférences de modèles 🤖"
+  },
+  {
+    "objectID": "slides-data/api.html#structuration-dune-requête",
+    "href": "slides-data/api.html#structuration-dune-requête",
+    "title": "Les API",
+    "section": "Structuration d’une requête",
+    "text": "Structuration d’une requête\nLes requêtes prennent la forme d’URI:\n\n\\[\n\\quad \\underbrace{\\text{https://api-adresse.data.gouv.fr}}_{\\text{API root}}/\\underbrace{\\text{search}}_{\\text{API endpoint}}\n\\]\n\\[\n\\quad /?\\underbrace{\\text{q=88+avenue+verdier}}_{\\text{main parameter}}\\&\\underbrace{\\text{postcode=92120}}_{\\text{additional parameter}}\n\\]\n\nAuxquelles vont s’ajouter des headers (explication à venir)\n\n\n\n\n\n\nNote\n\n\nDémonstration interactive"
+  },
+  {
+    "objectID": "slides-data/api.html#les-requêtes-http",
+    "href": "slides-data/api.html#les-requêtes-http",
+    "title": "Les API",
+    "section": "Les requêtes HTTP",
+    "text": "Les requêtes HTTP\n\nGET: récupérer des données depuis un serveur web (lecture d’une base de données…)\nPOST: envoyer des données au serveur (formulaires de mise à jour de données, etc.)\nPython communique avec internet via le package requests (requests.get et requests.post)"
+  },
+  {
+    "objectID": "slides-data/api.html#les-codes-http",
+    "href": "slides-data/api.html#les-codes-http",
+    "title": "Les API",
+    "section": "Les codes HTTP",
+    "text": "Les codes HTTP\n\nSignification des codes HTTP\n\n1xx : Informations\n2xx : Succès\n3xx : Redirections\n4xx : Erreurs côté client\n5xx : Erreurs côté serveur\n\n\n\n\n\n\n\n\nCodes à retenir\n\n\nCeux à retenir sont : 200 (succès), 400 (requête mal structurée), 401 (authentification nonréussie), 403 (accès interdit), 404 (ressource demandée n’existe pas), 503 (le serveur n’est pas en capacité de répondre)"
+  },
+  {
+    "objectID": "slides-data/api.html#les-swaggers",
+    "href": "slides-data/api.html#les-swaggers",
+    "title": "Les API",
+    "section": "Les swaggers",
+    "text": "Les swaggers\n\n\n\nFormat standardisé de documentation\n\nGénéralement ${URL_ROOT}/docs\n\nUtilisation interactive:\n\nGénère des exemples curl (ligne de commande)"
+  },
+  {
+    "objectID": "slides-data/api.html#comment-connaître-les-paramètres-dune-api",
+    "href": "slides-data/api.html#comment-connaître-les-paramètres-dune-api",
+    "title": "Les API",
+    "section": "Comment connaître les paramètres d’une API ?",
+    "text": "Comment connaître les paramètres d’une API ?\n\nSwagger \n\n\n\nOutils développement navigateur (CTRL+MAJ+K sur ):\n\nOnglet réseau \n\n\n\n\n\nPostman \n\n\n\n\nExtension  REST Client"
+  },
+  {
+    "objectID": "slides-data/api.html#les-requêtes-get",
+    "href": "slides-data/api.html#les-requêtes-get",
+    "title": "Les API",
+    "section": "Les requêtes GET",
+    "text": "Les requêtes GET\n\n\n\nRequête la plus commune\n\n\n\nTransformation en objet  (JSON -&gt; dict) est naturelle\n\n\n\n\nFormattage dépend de chaque API (lire la doc ! 👮)\n\n\n\n\nRetravailler l’output peut être lourd\n\nimport requests\nadresse = \"88 avenue verdier\"\nurl_ban_example = (\n    f\"https://api-adresse.data.gouv.fr/search/\"\n    f\"?q={adresse.replace(\" \", \"+\")}&postcode=92120\"\n)\nrequests.get(url_ban_example).json()"
+  },
+  {
+    "objectID": "slides-data/api.html#les-requêtes-post",
+    "href": "slides-data/api.html#les-requêtes-post",
+    "title": "Les API",
+    "section": "Les requêtes POST",
+    "text": "Les requêtes POST\n\n\n\nEnvoyer des données utiles à l’API\nPlus complexe mais Requests est flexible\n\nTransformer les objets  en input de l’API\n\n\nparams = {\n    \"columns\": [\"adresse\", \"Nom_commune\"],\n    \"citycode\": \"DEPCOM\",\n    \"result_columns\": [\"result_score\", \"latitude\", \"longitude\"],\n}\n\nresponse = requests.post(\n        \"https://api-adresse.data.gouv.fr/search/csv/\",\n        data=params,\n        files={\"data\": open(csv_file, \"rb\")},\n    )"
+  },
+  {
+    "objectID": "slides-data/api.html#bonnes-pratiques",
+    "href": "slides-data/api.html#bonnes-pratiques",
+    "title": "Les API",
+    "section": "Bonnes pratiques",
+    "text": "Bonnes pratiques\nLa doctrine générale\n\nSource: Cours de l’ENSAE de mise en production"
+  },
+  {
+    "objectID": "slides-data/api.html#bonnes-pratiques-pour-les-secrets",
+    "href": "slides-data/api.html#bonnes-pratiques-pour-les-secrets",
+    "title": "Les API",
+    "section": "Bonnes pratiques pour les secrets",
+    "text": "Bonnes pratiques pour les secrets\n\n\n\nBoite de dialogue via getpass (application interactive uniquement)\n\n\n\nVariables d’environnement:\n\nDans un fichier .env (non committé!) lu avec dotenv\nDans les secrets de l’intégration continue (cf. doc )\n\n\nfrom dotenv import load_dotenv\nload_dotenv()\ntoken = os.getenv(\"MON_PETIT_JETON\")"
+  },
+  {
+    "objectID": "slides-data/api.html#conclusion",
+    "href": "slides-data/api.html#conclusion",
+    "title": "Les API",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nPratique pour récupérer des données ponctuelles:\n\nAfficher un nombre limité d’enregistrements dans une application\nRécupérer des données issues d’un processus de transformation complexe\n\n\n\n\nLimitées en termes de volumétrie ou stabilité d’accès\n\n\n\n\nCode très adhérant à une API et un langage client"
+  },
+  {
+    "objectID": "slides-data/api.html#des-questions",
+    "href": "slides-data/api.html#des-questions",
+    "title": "Les API",
+    "section": "Des questions ?",
+    "text": "Des questions ?\n\n\n\n\nLes ateliers du SSPHub"
+  },
+  {
+    "objectID": "slides-data/index.html#the-obligatory-intro-slide",
+    "href": "slides-data/index.html#the-obligatory-intro-slide",
+    "title": "Le format de données Parquet",
+    "section": "“The obligatory intro slide”",
+    "text": "“The obligatory intro slide”\n\n\n\nSource : motherduck.com"
+  },
+  {
+    "objectID": "slides-data/index.html#enjeux",
+    "href": "slides-data/index.html#enjeux",
+    "title": "Le format de données Parquet",
+    "section": "Enjeux",
+    "text": "Enjeux\n\nTendance à la massification des données\n\nRelatif aux capacités de stockage et de traitement\n\n\n\n\n\n\nSource : AI with Python"
+  },
+  {
+    "objectID": "slides-data/index.html#pour-traiter-la-volumétrie",
+    "href": "slides-data/index.html#pour-traiter-la-volumétrie",
+    "title": "Le format de données Parquet",
+    "section": "Pour traiter la volumétrie",
+    "text": "Pour traiter la volumétrie\n\nUtiliser un format de données adapté (Parquet)\n\n\n\nUtiliser des outils informatiques adaptés\n\nSuffisant la plupart du temps : calcul larger than memory optimisé (Arrow / DuckDB)\nSi volumétrie massive : calcul distribué (Spark)\n\n\n\n\n\nUtiliser une infra de stockage adaptée (S3)\n\n\n\n\n\n\n\n\n\nNote\n\n\nNous allons voir comment ces trois points sont complémentaires."
+  },
+  {
+    "objectID": "slides-data/index.html#big-data-is-dead",
+    "href": "slides-data/index.html#big-data-is-dead",
+    "title": "Le format de données Parquet",
+    "section": "“Big Data is dead” ?",
+    "text": "“Big Data is dead” ?\n\nJordan Tigani : Big Data is dead\n\n“The big data frontier keeps receding”\n“Most people don’t have that much data”\n“Most data is rarely queried”\n\n\n\n\nPlaidoyer pour une parcimonie…\n\n… qui facilite la mise en production !"
+  },
+  {
+    "objectID": "slides-data/index.html#enjeux-1",
+    "href": "slides-data/index.html#enjeux-1",
+    "title": "Le format de données Parquet",
+    "section": "Enjeux",
+    "text": "Enjeux\n\nLe choix d’un format de données répond à un arbitrage entre plusieurs critères :\n\nPublic cible\nFinalité (traitement, analyse, diffusion)\nVolumétrie\nInteropérabilité"
+  },
+  {
+    "objectID": "slides-data/index.html#formats-traditionnels",
+    "href": "slides-data/index.html#formats-traditionnels",
+    "title": "Le format de données Parquet",
+    "section": "Formats traditionnels",
+    "text": "Formats traditionnels\n\nFormats de données adhérents à un langage (sas7bdat, RDS, fst, etc.)\n\nNon-interopérables -&gt; à éviter !\n\n\n\n\nLe format CSV\n\nInteropérable et simple d’utilisation\nPas de gestion des méta-données\nPeu adapté aux données volumineuses"
+  },
+  {
+    "objectID": "slides-data/index.html#limites-du-csv",
+    "href": "slides-data/index.html#limites-du-csv",
+    "title": "Le format de données Parquet",
+    "section": "Limites du CSV",
+    "text": "Limites du CSV\n\n\n\nDes performances limitées\n\nStockage : non-compressé -&gt; espace disque élevé\nLecture : “orienté-ligne” -&gt; performances faibles\n\n\n\n\n\n\n\n\n\nPas de typage des données à l’écriture du fichier\n\nDemande expertise et précaution à la lecture\nExemple: 01004 pour le code commune d’Ambérieu-en-Bugey"
+  },
+  {
+    "objectID": "slides-data/index.html#un-format-léger",
+    "href": "slides-data/index.html#un-format-léger",
+    "title": "Le format de données Parquet",
+    "section": "Un format léger ",
+    "text": "Un format léger \n\nStockage :\n\nCompression : entre 5 et 20 fois plus léger qu’un CSV\n\n\n\n\n\n\n\n\n\n\nExemple: Recensement de la Population\n\n\n\nFicher détail : 20 millions de lignes, 92 variables\n\nCSV: &gt; 4Go\nParquet: &lt; 500Mo"
+  },
+  {
+    "objectID": "slides-data/index.html#un-format-efficace",
+    "href": "slides-data/index.html#un-format-efficace",
+    "title": "Le format de données Parquet",
+    "section": "Un format efficace",
+    "text": "Un format efficace\n\nLecture :\n\nJusqu’à 34x plus rapide qu’un CSV\n\n\n\n\n“Orienté colonne”\n\nOptimisé pour les traitements analytiques\nLimite la quantité de données à mettre en mémoire\nConçu pour être écrit une fois mais lu fréquemment"
+  },
+  {
+    "objectID": "slides-data/index.html#pour-optimiser-la-lecture",
+    "href": "slides-data/index.html#pour-optimiser-la-lecture",
+    "title": "Le format de données Parquet",
+    "section": "Pour optimiser la lecture",
+    "text": "Pour optimiser la lecture\n\nPartitionner ou ordonner les données\n\n\n\n\n\n\n\n\n\n\n\n\n\nL’art de bien partitionner\n\n\n\nPartitionner par une/des variable(s) d’intérêt si gros fichier\n\nEviter de créer de nombreux petits (&lt; 128Mo) fichiers\n\nSinon ordonner les données avant d’écrire le fichier (cf. Eric Mauvière)"
+  },
+  {
+    "objectID": "slides-data/index.html#un-format-universel-et-fiable",
+    "href": "slides-data/index.html#un-format-universel-et-fiable",
+    "title": "Le format de données Parquet",
+    "section": "Un format universel et fiable",
+    "text": "Un format universel et fiable\n\nGestion native des méta-données\n\nDéfinition automatique d’un schéma (noms, types)\nMise à disposition plus robuste\n\n\n\n\nInteropérable\n\n\n\n\nOpen-source\n\n\n\n\nNon lisible par un humain mais de plus en plus de visualiseurs en ligne\n\nPar exemple sur le SSPCloud"
+  },
+  {
+    "objectID": "slides-data/index.html#parquet-quels-avantages",
+    "href": "slides-data/index.html#parquet-quels-avantages",
+    "title": "Le format de données Parquet",
+    "section": "Parquet: quels avantages ?",
+    "text": "Parquet: quels avantages ?\n\nFormat libre, open source et indépendant du langage ;\n\nLes formats propriétaires imposent des outils aux consommateurs !\n\nPlus de confort pour les utilisateurs:\n\nDes requêtes plus rapides et efficaces: seulement les données nécessaires sont lues\nDes données conformes à la mise à disposition par le producteur"
+  },
+  {
+    "objectID": "slides-data/index.html#parquet-quels-usages",
+    "href": "slides-data/index.html#parquet-quels-usages",
+    "title": "Le format de données Parquet",
+    "section": "Parquet: quels usages ?",
+    "text": "Parquet: quels usages ?\n\nFormat privilégié pour la mise à disposition de données internes à l’Insee:\n\nMoins d’asymétries entre utilisateurs et producteurs.\n\n\n\n\n\n\n\n\n\nPremières diffusions à l’externe\n\n\n\nBureaux de votes du répertoire électoral unique (REU):\nRecensement de la population (RP)\nBase permanente des équipements (BPE)"
+  },
+  {
+    "objectID": "slides-data/index.html#parquet-quels-usages-1",
+    "href": "slides-data/index.html#parquet-quels-usages-1",
+    "title": "Le format de données Parquet",
+    "section": "Parquet: quels usages ?",
+    "text": "Parquet: quels usages ?\n\n\n\n\n\n\nExemples de cartes pouvant être produites simplement avec les données du recensement diffusées par l’Insee"
+  },
+  {
+    "objectID": "slides-data/index.html#enjeu",
+    "href": "slides-data/index.html#enjeu",
+    "title": "Le format de données Parquet",
+    "section": "Enjeu",
+    "text": "Enjeu\n\nParquet ne résout pas tout\n\nL’espace disque est optimisé\nLes données décompressées doivent passer en RAM\n\n\n\n\nLe framework adapté dépend de la volumétrie\n\nPour la plupart des besoins : Arrow et DuckDB"
+  },
+  {
+    "objectID": "slides-data/index.html#les-frameworks",
+    "href": "slides-data/index.html#les-frameworks",
+    "title": "Le format de données Parquet",
+    "section": "Les frameworks",
+    "text": "Les frameworks\n\nDeux frameworks de référence : Arrow et DuckDB\n\nOrientation fichier (Arrow) VS orientation BDD (DuckDB)\n\n\n\n\nTraitement en-mémoire optimisé\n\nOrientés-colonne\nLazy evaluation (prochaine slide)\n\n\n\n\n\nTrès bonne intégration:\n\nAvec le tidyverse ()\nAvec le système de stockage S3"
+  },
+  {
+    "objectID": "slides-data/index.html#les-frameworks-1",
+    "href": "slides-data/index.html#les-frameworks-1",
+    "title": "Le format de données Parquet",
+    "section": "Les frameworks",
+    "text": "Les frameworks"
+  },
+  {
+    "objectID": "slides-data/index.html#la-lazy-evaluation",
+    "href": "slides-data/index.html#la-lazy-evaluation",
+    "title": "Le format de données Parquet",
+    "section": "La lazy evaluation",
+    "text": "La lazy evaluation\n\nLes frameworks comme Arrow ou DuckDB n’exécutent pas immédiatement les opérations\n\n\n\nLes instructions sont optimisées avant exécution\n\nVous écrivez un plan d’exécution, réinterprété\n\n\n\n\n\nAvantages :\n\nMoins de données manipulées inutilement\nMoins de RAM consommée\nExécution plus rapide car optimisée"
+  },
+  {
+    "objectID": "slides-data/index.html#la-lazy-evaluation-1",
+    "href": "slides-data/index.html#la-lazy-evaluation-1",
+    "title": "Le format de données Parquet",
+    "section": "La lazy evaluation",
+    "text": "La lazy evaluation\n\n\n\n\n\n\n\nExemple d’une requête lazy\n\n\nEn supposant qu’achille est un objet Arrow ou DuckDB:\nn_logements_depcom &lt;- achille |&gt;\n1  filter(dep %in% c(\"01\", \"02\", \"03\")) |&gt;\n2  select(idlogement, depcom) |&gt;\n  group_by(depcom) |&gt;\n  summarise(n_logements = n()) |&gt;\n3  collect()\n\n1\n\nRécupère seulement les données nécessaires\n\n2\n\nRécupère seulement les variables nécessaires\n\n3\n\nLes calculs ne sont effectués qu’à cette étape !"
+  },
+  {
+    "objectID": "slides-data/index.html#la-lazy-evaluation-2",
+    "href": "slides-data/index.html#la-lazy-evaluation-2",
+    "title": "Le format de données Parquet",
+    "section": "La lazy evaluation",
+    "text": "La lazy evaluation\nVoici le début du plan:\n\n❓️ Pourrait-il être optimisé ?"
+  },
+  {
+    "objectID": "slides-data/index.html#la-lazy-evaluation-3",
+    "href": "slides-data/index.html#la-lazy-evaluation-3",
+    "title": "Le format de données Parquet",
+    "section": "La lazy evaluation",
+    "text": "La lazy evaluation\nVoici le plan plus optimal:\n\nPredicate pushdown"
+  },
+  {
+    "objectID": "slides-data/index.html#le-format-parquet",
+    "href": "slides-data/index.html#le-format-parquet",
+    "title": "Le format de données Parquet",
+    "section": "Le format Parquet",
+    "text": "Le format Parquet\n\nParquet gagne sur tous les tableaux\n\n\n\n\n\n\n\n\n\n\nAteliers du SSPHub #2"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Les ateliers du SSPHub",
+    "section": "",
+    "text": "Les API\n\n\n\n\n\n\nLino Galiana\n\n\n09/04/2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLe format de données Parquet\n\n\nSlides présentant les enjeux de l’utilisation du format Parquet et l’écosystème associé\n\n\n\nLino Galiana\n\n\n16/04/2025\n\n\n\n\n\n\n\n\nAucun article correspondant"
+  }
+]
