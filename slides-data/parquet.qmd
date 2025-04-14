@@ -357,6 +357,9 @@ n_logements_depcom <- achille |>
 
 - Le [cours de mise en production](https://ensae-reproductibilite.github.io/website/) de l'ENSAE
 
+## Applications
+
+![](/slides-data/images/comparatifs_exo.png)
 
 ## Ce n'est pas fini !
 
@@ -372,6 +375,60 @@ n_logements_depcom <- achille |>
 . . .
 
 - [DuckDB WASM](https://minio.lab.sspcloud.fr/lgaliana/generative-art/ssphub/tunes_chasing.jpg) pour faire du [__`DuckDB` dans le navigateur__]{.orange} :
-    - Pour des [**_dataviz_ réactives**]{.blue2}...
-    - Dans des [**sites statiques**]{.blue2} !
+    - Pour des [**_dataviz_ réactives**]{.blue2}... dans des [**sites statiques**]{.blue2} !
     - Bye bye les galères de déploiement de `Shiny`, `Streamlit`...
+
+
+# Fonctionnalités plus avancées
+
+## Les extensions spatiales
+
+- Possibilité de lire/écrire des [**objets géographiques**]{.orange} dans `Parquet`
+  - Compatible avec les standards `GeoParquet`
+  - Extension `SPATIAL`
+
+. . .
+
+- Permet des traitements [**géographiques efficaces**]{.blue2} :
+  - Jointures spatiales, calculs de distance…
+  - Récupère le résultat sous `sf`
+
+
+## Travailler avec `S3`
+
+* Beaucoup plus simple qu'un _data warehouse_ et des VM `postgre`
+
+. . .
+
+* On peut lire la donnée sur `S3` _presque comme si_ elle était en local
+
+```{.python}
+FROM 's3://bucket_name/filename.extension';
+SELECT *
+WHERE DEPT=='36'
+```
+
+## `DuckDB` dans le navigateur
+
+- Grâce à `DuckDB-WASM`, on peut exécuter du SQL [**dans le navigateur**]{.orange} 🎯
+  - Embarqué par défaut sur [`Observablehq`](https://observablehq.com/) et [`Quarto`](https://quarto.org/docs/interactive/ojs/)
+
+. . .
+
+- Idéal pour des [**applications interactives**]{.blue2} :
+  - Visualisations réactives
+  - Exploration de fichiers `Parquet` sans serveur
+
+. . .
+
+- ⚡ **Pas besoin de serveur**, tout est côté client !
+
+
+::: {.callout-note}
+## Exemples inspirants
+
+- Explorateur de données [**100 % statique**]{.blue2} sur `SSPCloud`
+- Visualisation locale sans partage de données sensibles
+:::
+
+
