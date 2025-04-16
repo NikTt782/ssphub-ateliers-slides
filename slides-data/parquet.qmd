@@ -12,10 +12,7 @@ footer: |
 lang: fr-FR
 chalkboard: # press the B key to toggle chalkboard
   theme: whiteboard
-format:
-  onyxia-revealjs:
-    output-file: index.html
-    output-dir: _site
+format: onyxia-revealjs
 controls: true
 css: custom.css
 from: markdown+emoji
