@@ -422,14 +422,27 @@ WHERE DEPT=='36'
 
 ## Exemple
 
-```{ojs}
-container
-```
 
 ```{ojs}
-import {container, } from "@linogaliana/atelier-parquet-ssphub" 
+//| echo: false
+html`
+  <div style="display: flex; flex-direction: column; gap: 1rem;">
+
+    <!-- Search bar at the top -->
+    <div>${viewof search}</div>
+
+    <!-- Two-column block -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+      <div>${produce_histo(dvf)}</div>
+      <div>${viewof table_dvf}</div>
+    </div>
+
+
+  </div>
+`
 ```
 
+{{< include "_interactive_parquet.qmd" >}}
 
 
 
