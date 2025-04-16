@@ -432,7 +432,7 @@ html`
     <div>${viewof search}</div>
 
     <!-- Two-column block -->
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; backgroundColor: '#293845';">
       <div>${produce_histo(dvf)}</div>
       <div>${viewof table_dvf}</div>
     </div>
@@ -445,4 +445,22 @@ html`
 {{< include "_interactive_parquet.qmd" >}}
 
 
+```{ojs}
+viewof table_dvf = Inputs.table(dvf, {columns: ["date", "valeur_fonciere"], rows: 15})
 
+produce_histo = function(dvf){
+  const histo = Plot.plot({
+  style: {backgroundColor: "transparent"},
+  marks: [
+    Plot.rectY(dvf, Plot.binX({y: "count"}, {x: "valeur_fonciere", fill: "#ff562c"})),
+    Plot.ruleY([0])
+  ]
+})
+  return histo
+}
+```
+
+
+## Des questions ?
+
+![](https://minio.lab.sspcloud.fr/lgaliana/generative-art/pythonds/kid.png)
