@@ -25,7 +25,7 @@ priority: 1
 
 ## "The obligatory intro slide"
 
-![Source : [motherduck.com](https://motherduck.com/blog/big-data-is-dead/)](img/intro-big-data.png){fig-align="center" height=400}
+![Source : [motherduck.com](https://motherduck.com/blog/big-data-is-dead/)](https://motherduck.com/_next/image/?url=https%3A%2F%2Fweb-assets-prod.motherduck.com%2Fassets%2Fimg%2Fimage_2_0f68796072.jpg&w=1920&q=75){fig-align="center" height=400}
 
 ## Enjeux
 
