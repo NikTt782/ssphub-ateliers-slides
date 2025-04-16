@@ -415,20 +415,21 @@ WHERE DEPT=='36'
 
 . . .
 
-- Idéal pour des [**applications interactives**]{.blue2} :
-  - Visualisations réactives
-  - Exploration de fichiers `Parquet` sans serveur
-
-. . .
-
-- ⚡ **Pas besoin de serveur**, tout est côté client !
+- Idéal pour des [**applications interactives**]{.orange} :
+  - Visualisations réactives sur des [**sites statiques**]{.blue2} 
+  - ⚡ [**Pas besoin de serveur**]{.blue2} {{< fa brands r-project >}} ou {{< fa brands python >}}, tout est côté client !
 
 
-::: {.callout-note}
-## Exemples inspirants
+## Exemple
 
-- Explorateur de données [**100 % statique**]{.blue2} sur `SSPCloud`
-- Visualisation locale sans partage de données sensibles
-:::
+```{ojs}
+container
+```
+
+```{ojs}
+import {container, } from "@linogaliana/atelier-parquet-ssphub" 
+```
+
+
 
 
