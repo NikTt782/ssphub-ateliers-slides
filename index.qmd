@@ -24,5 +24,14 @@ listing:
   type: grid
 ---
 
+## Erreur system
+
+```{python}
+#| echo: true
+import pandas as pd
+```
+
+## Erreur system
+
 ::: {#listing-mc-data}
 :::
