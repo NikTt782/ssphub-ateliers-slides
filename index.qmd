@@ -1,5 +1,5 @@
 ---
-title: Les ateliers du `SSPHub`
+title: Coucou pour ce troisième atelier du `SSPHub`
 subtitle: |
   **[Liste des ressources présentées]{.orange}**
 author:
