@@ -3,7 +3,7 @@ title: Coucou pour ce troisième atelier du `SSPHub`
 subtitle: |
   **[Liste des ressources présentées]{.orange}**
 author:
-  - name: "[Lino Galiana](https://www.linogaliana.fr/)"
+  - name: "[Lino Gali ana](https://www.linogaliana.fr/)"
     affiliations:
         - name: "Insee"
 date: 2025-04-09
