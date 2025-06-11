@@ -10,7 +10,7 @@ date: 2025-04-09
 date-format: short
 slide-number: true
 footer: |
-  **Ateliers du `SSPHub`**
+  **Coucou les ateliers du `SSPHub`**
 lang: fr-FR
 slide-tone: true
 format:
