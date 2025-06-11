@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "slides-data/parquet.html#un-beau-week-end-de-vacances",
+    "href": "slides-data/parquet.html#un-beau-week-end-de-vacances",
+    "title": "Le format de données Hello",
+    "section": "Un beau week-end de vacances",
+    "text": "Un beau week-end de vacances\n\n\n\nSource : coucou voici la source d’un beau bateau"
+  },
+  {
+    "objectID": "slides-data/parquet.html#qui-a-permis-de-faire-de-belles-découvertes",
+    "href": "slides-data/parquet.html#qui-a-permis-de-faire-de-belles-découvertes",
+    "title": "Le format de données Hello",
+    "section": "Qui a permis de faire de belles découvertes",
+    "text": "Qui a permis de faire de belles découvertes\n\nCela comprenait un premier voyage en ferry\n\nEt puis une semaine tranquille proche de la mer\n\n\n\n\n\nUn beau voilier"
+  },
+  {
+    "objectID": "slides-data/parquet.html#pour-traiter-le-mal-de-mer",
+    "href": "slides-data/parquet.html#pour-traiter-le-mal-de-mer",
+    "title": "Le format de données Hello",
+    "section": "Pour traiter le mal de mer",
+    "text": "Pour traiter le mal de mer\nIntroduire un beau tableau\n\n\n\n\nRight\nLeft\nDefault\nCenter\n\n\n\n\n12\n12\n12\n12\n\n\n123\n123\n123\n123\n\n\n1\n1\n1\n1\n\n\n\n1 + 1"
+  }
+]
