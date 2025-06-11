@@ -19,5 +19,19 @@
     "title": "Le format de données Hello",
     "section": "Pour traiter le mal de mer",
     "text": "Pour traiter le mal de mer\nIntroduire un beau tableau\n\n\n\n\nRight\nLeft\nDefault\nCenter\n\n\n\n\n12\n12\n12\n12\n\n\n123\n123\n123\n123\n\n\n1\n1\n1\n1\n\n\n\n1 + 1"
+  },
+  {
+    "objectID": "index.html#erreur-system",
+    "href": "index.html#erreur-system",
+    "title": "Coucou pour ce troisième atelier du SSPHub",
+    "section": "Erreur system",
+    "text": "Erreur system\n\nimport pandas as pd"
+  },
+  {
+    "objectID": "index.html#erreur-system-1",
+    "href": "index.html#erreur-system-1",
+    "title": "Coucou pour ce troisième atelier du SSPHub",
+    "section": "Erreur system",
+    "text": "Erreur system\n\n\n\n\n\n\n\n\n\n\nLe format de données Hello\n\n\nSlides présentant les enjeux de l’utilisation du format Parquet et l’écosystème associé\n\n\n\nLino Galiana\n\n\n15/02/2024\n\n\n\n\n\n\nAucun article correspondant"
   }
 ]
